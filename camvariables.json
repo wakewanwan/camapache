@@ -683,50 +683,6 @@
       "group_name": "virtualmachine"
     },
     {
-      "name": "HTTPNode01_network_interface_label",
-      "type": "string",
-      "description": "vSphere port group or network label for virtual machine's vNIC",
-      "hidden": false,
-      "label": "Virtual Machine vSphere Port Group - HTTPNode01",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "HTTPNode01_cluster",
-      "type": "string",
-      "description": "Target vSphere cluster to host the virtual machine",
-      "hidden": false,
-      "label": "vSphere Cluster - HTTPNode01",
-      "secured": false,
-      "required": false,
-      "immutable": false,
-      "group_name": "cloud"
-    },
-    {
-      "name": "HTTPNode01_datacenter",
-      "type": "string",
-      "description": "Target vSphere datacenter for virtual machine creation",
-      "hidden": false,
-      "label": "vSphere Datacenter - HTTPNode01",
-      "secured": false,
-      "required": false,
-      "immutable": false,
-      "group_name": "cloud"
-    },
-    {
-      "name": "HTTPNode01_folder",
-      "type": "string",
-      "description": "Target vSphere folder for virtual machine",
-      "hidden": false,
-      "label": "vSphere Folder Name - HTTPNode01",
-      "secured": false,
-      "required": false,
-      "immutable": false,
-      "group_name": "cloud"
-    },
-    {
       "name": "HTTPNode01_adapter_type",
       "type": "string",
       "description": "Network adapter type for vNIC Configuration",
@@ -745,17 +701,6 @@
           "default": "e1000"
         }
       ],
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "HTTPNode01_resource_pool",
-      "type": "string",
-      "description": "Target vSphere Resource Pool to host the virtual machine",
-      "hidden": false,
-      "label": "vSphere Resource Pool - HTTPNode01",
-      "secured": false,
       "required": true,
       "immutable": false,
       "group_name": "virtualmachine"
