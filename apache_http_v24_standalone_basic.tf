@@ -63,31 +63,9 @@ variable "ibm_stack_name" {
 }
 
 ##############################################################
-# Vsphere data for provider
+# Openstack for provider
 ##############################################################
-data "vsphere_datacenter" "HTTPNode01_datacenter" {
-  name = "${var.HTTPNode01_datacenter}"
-}
 
-data "vsphere_datastore" "HTTPNode01_datastore" {
-  name          = "${var.HTTPNode01_root_disk_datastore}"
-  datacenter_id = "${data.vsphere_datacenter.HTTPNode01_datacenter.id}"
-}
-
-data "vsphere_resource_pool" "HTTPNode01_resource_pool" {
-  name          = "${var.HTTPNode01_resource_pool}"
-  datacenter_id = "${data.vsphere_datacenter.HTTPNode01_datacenter.id}"
-}
-
-data "vsphere_network" "HTTPNode01_network" {
-  name          = "${var.HTTPNode01_network_interface_label}"
-  datacenter_id = "${data.vsphere_datacenter.HTTPNode01_datacenter.id}"
-}
-
-data "vsphere_virtual_machine" "HTTPNode01_template" {
-  name          = "${var.HTTPNode01-image}"
-  datacenter_id = "${data.vsphere_datacenter.HTTPNode01_datacenter.id}"
-}
 
 ##### Environment variables #####
 #Variable : ibm_pm_access_token
@@ -256,14 +234,6 @@ variable "HTTPNode01-os_password" {
   description = "Operating System Password for the Operating System User to access virtual machine"
 }
 
-variable "HTTPNode01_folder" {
-  description = "Target vSphere folder for virtual machine"
-}
-
-variable "HTTPNode01_datacenter" {
-  description = "Target vSphere datacenter for virtual machine creation"
-}
-
 variable "HTTPNode01_domain" {
   description = "Domain Name of virtual machine"
 }
@@ -276,14 +246,6 @@ variable "HTTPNode01_number_of_vcpu" {
 variable "HTTPNode01_memory" {
   description = "Memory assigned to the virtual machine in megabytes. This value is required to be an increment of 1024"
   default     = "2048"
-}
-
-variable "HTTPNode01_cluster" {
-  description = "Target vSphere cluster to host the virtual machine"
-}
-
-variable "HTTPNode01_resource_pool" {
-  description = "Target vSphere Resource Pool to host the virtual machine"
 }
 
 variable "HTTPNode01_dns_suffixes" {
