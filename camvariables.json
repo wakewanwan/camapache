@@ -187,51 +187,8 @@
       "immutable": false,
       "group_name": "cloud"
     },
-    {
-      "name": "HTTPNode01_dns_servers",
-      "type": "list",
-      "description": "DNS servers for the virtual network adapter",
-      "hidden": false,
-      "label": "DNS Servers - HTTPNode01",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "HTTPNode01_dns_suffixes",
-      "type": "list",
-      "description": "Name resolution suffixes for the virtual network adapter",
-      "hidden": false,
-      "label": "DNS Suffixes - HTTPNode01",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "HTTPNode01_root_disk_keep_on_remove",
-      "type": "string",
-      "description": "Delete template disk volume when the virtual machine is deleted",
-      "default": "false",
-      "hidden": true,
-      "label": "Delete template disk volume when the virtual machine is deleted - HTTPNode01",
-      "secured": false,
-      "options": [
-        {
-          "value": "false",
-          "label": "False",
-          "default": "true"
-        },
-        {
-          "value": "true",
-          "label": "True"
-        }
-      ],
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
+   
+ 
     {
       "name": "HTTPNode01_domain",
       "type": "string",
@@ -497,34 +454,67 @@
       "immutable_after_create": true,
       "group_name": "environment"
     },
-    {
-      "name": "HTTPNode01-image",
+     {
+      "name":  "openstack_image_id",
       "type": "string",
-      "description": "Operating system image id / template that should be used when creating the virtual image",
+      "description": "The ID of the image to be used for deploy operations.",
       "hidden": false,
-      "label": "Operating System ID / Template - HTTPNode01",
+      "label": "Openstack Image ID",
       "secured": false,
       "required": true,
       "immutable": false,
       "group_name": "virtualmachine"
     },
     {
-      "name": "HTTPNode01-os_admin_user",
+      "name":  "number_of_instances",
       "type": "string",
-      "description": "Name of the admin user account in the virtual machine that will be accessed via SSH",
+      "description": "The number of instances to provision.",
       "hidden": false,
-      "label": "Operating System Username - HTTPNode01",
+      "label": "Number of Instances to deploy",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    }, 
+    {
+      "name":  "openstack_flavor_id",
+      "type": "string",
+      "description": "The ID of the flavor to be used for deploy operations.",
+      "hidden": false,
+      "label": "Openstack Flavor ID",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },  
+    {
+      "name":  "openstack_network_name",
+      "type": "string",
+      "description": "The name of the network to be used for deploy operations.",
+      "hidden": false,
+      "label": "Openstack Network Name",
       "secured": false,
       "required": true,
       "immutable": false,
       "group_name": "virtualmachine"
     },
     {
-      "name": "HTTPNode01-os_password",
+      "name":  "image_id_username",
+      "type": "string",
+      "description": "The username to SSH into image ID",
+      "hidden": false,
+      "label": "Openstack Image Username",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
+    },
+    {
+      "name":  "image_id_password",
       "type": "password",
-      "description": "Operating System Password for the Operating System User to access virtual machine",
+      "description": "The password of the username to SSH into image ID",
       "hidden": false,
-      "label": "Operating system password - HTTPNode01",
+      "label": "Openstack Image Password",
       "secured": true,
       "required": true,
       "immutable": false,
@@ -553,40 +543,6 @@
       "immutable": false,
       "group_name": "environment",
       "default": "${advanced_content_runtime_chef.ibm_pm_public_ssh_key}"
-    },
-    {
-      "name": "HTTPNode01_root_disk_size",
-      "type": "string",
-      "description": "Size of template disk volume. Should be equal to template's disk size",
-      "default": "25",
-      "hidden": false,
-      "label": "Root Disk Size - HTTPNode01",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "HTTPNode01-name",
-      "type": "string",
-      "description": "Short hostname of virtual machine",
-      "hidden": false,
-      "label": "Short hostname - HTTPNode01",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "HTTPNode01_root_disk_datastore",
-      "type": "string",
-      "description": "Data store or storage cluster name for target virtual machine's disks",
-      "hidden": false,
-      "label": "Template Disk Datastore - HTTPNode01",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
     },
     {
       "name": "HTTPNode01_httpd_os_users_web_content_owner_ldap_user",
@@ -624,86 +580,6 @@
       "immutable": false,
       "immutable_after_create": true,
       "group_name": "httpnode01"
-    },
-    {
-      "name": "HTTPNode01_ipv4_gateway",
-      "type": "string",
-      "description": "IPv4 gateway for vNIC configuration",
-      "hidden": false,
-      "label": "Virtual Machine Gateway Address - HTTPNode01",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "HTTPNode01_ipv4_address",
-      "type": "string",
-      "description": "IPv4 address for vNIC configuration",
-      "hidden": false,
-      "label": "Virtual Machine IP Address - HTTPNode01",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "HTTPNode01_memory",
-      "type": "string",
-      "description": "Memory assigned to the virtual machine in megabytes. This value is required to be an increment of 1024",
-      "default": 2048,
-      "hidden": false,
-      "label": "Virtual Machine Memory - HTTPNode01",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "HTTPNode01_ipv4_prefix_length",
-      "type": "string",
-      "description": "IPv4 prefix length for vNIC configuration. The value must be a number between 8 and 32",
-      "hidden": false,
-      "label": "Virtual Machine Netmask Prefix - HTTPNode01",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "HTTPNode01_number_of_vcpu",
-      "type": "string",
-      "description": "Number of virtual CPU for the virtual machine, which is required to be a positive Integer",
-      "default": 2,
-      "hidden": false,
-      "label": "Virtual Machine vCPUs - HTTPNode01",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
-    },
-    {
-      "name": "HTTPNode01_adapter_type",
-      "type": "string",
-      "description": "Network adapter type for vNIC Configuration",
-      "default": "vmxnet3",
-      "hidden": false,
-      "label": "vSphere Network Adapter Type - HTTPNode01",
-      "secured": false,
-      "options": [
-        {
-          "value": "vmxnet3",
-          "label": "vmxnet3",
-          "default": "true"
-        },
-        {
-          "value": "e1000",
-          "default": "e1000"
-        }
-      ],
-      "required": true,
-      "immutable": false,
-      "group_name": "virtualmachine"
     },
     {
       "name": "user_public_ssh_key",
