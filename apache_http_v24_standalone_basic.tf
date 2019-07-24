@@ -65,7 +65,27 @@ variable "ibm_stack_name" {
 ##############################################################
 # Openstack for provider
 ##############################################################
+variable "openstack_image_id" {
+  description = "The ID of the image to be used for deploy operations."
+}
 
+variable "openstack_flavor_id" {
+  description = "The ID of the flavor to be used for deploy operations."
+}	
+
+variable "openstack_network_name" {
+  description = "The name of the network to be used for deploy operations."
+}
+
+variable "image_id_username" {
+  description = "The username to SSH into image ID"
+}
+
+variable "image_id_password" {
+  description = "The password of the username to SSH into image ID"
+}
+
+variable "number_of_instances" {}
 
 ##### Environment variables #####
 #Variable : ibm_pm_access_token
