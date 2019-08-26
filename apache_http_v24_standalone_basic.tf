@@ -317,7 +317,7 @@ variable "HTTPNode01_root_disk_size" {
 module "provision_proxy" {
   source 						= "git::https://github.com/IBM-CAMHub-Open/terraform-modules.git?ref=1.0//vmware/proxy"
   ip                  = "${var.HTTPNode01_ipv4_address}"
-  id									= "${vsphere_virtual_machine.HTTPNode01.id}"
+  id									= "${openstack_compute_instance_v2.single-vm.id}"
   ssh_user            = "${var.HTTPNode01-os_admin_user}"
   ssh_password        = "${var.HTTPNode01-os_password}"
   http_proxy_host     = "${var.http_proxy_host}"
@@ -434,7 +434,7 @@ EOF
 #########################################################
 
 resource "camc_bootstrap" "HTTPNode01_chef_bootstrap_comp" {
-  depends_on      = ["camc_vaultitem.VaultItem", "vsphere_virtual_machine.HTTPNode01", "module.provision_proxy"]
+  depends_on      = ["camc_vaultitem.VaultItem", "openstack_compute_instance_v2.single-vm", "module.provision_proxy"]
   name            = "HTTPNode01_chef_bootstrap_comp"
   camc_endpoint   = "${var.ibm_pm_service}/v1/bootstrap/chef"
   access_token    = "${var.ibm_pm_access_token}"
