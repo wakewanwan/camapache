@@ -86,7 +86,20 @@
       "secured": false,
       "required": false,    
       "default": "${httpproxy.port}"
-    },          
+    },  
+    {
+      "name": "MQNode01-es_http_port",
+      "type": "string",
+      "description": "The HTTP port for elasticsearch",
+      "default": "9200",
+      "hidden": false,
+      "label": "HTTP Port",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "immutable_after_create": true,
+      "group_name": "mqnode01"
+    },    
     {
       "name": "bastion_host",
       "type": "string",
